@@ -11,6 +11,7 @@ from tkinter import filedialog, messagebox, ttk
 from tkinter.scrolledtext import ScrolledText
 
 APP_NAME = "PhoneFlasher"
+APP_AUTHOR = "Daniel Kissel"
 
 BASE_DIR = Path(__file__).resolve().parent
 TOOLS_DIR = BASE_DIR / "tools"
@@ -78,7 +79,7 @@ def open_path(path):
 class PhoneFlasherApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title(APP_NAME)
+        self.title(f"{APP_NAME} - {APP_AUTHOR}")
         self.geometry("980x720")
         self.resizable(True, True)
 
@@ -91,12 +92,14 @@ class PhoneFlasherApp(tk.Tk):
         header.pack(fill=tk.X, padx=12, pady=(12, 0))
 
         title = ttk.Label(header, text=APP_NAME, font=("Segoe UI", 18, "bold"))
+        author = ttk.Label(header, text=f"by {APP_AUTHOR}", font=("Segoe UI", 10))
         subtitle = ttk.Label(
             header,
             text="ADB/Fastboot flasher for Samsung, Pixel, LG, and OnePlus",
             font=("Segoe UI", 10),
         )
         title.pack(anchor="w")
+        author.pack(anchor="w")
         subtitle.pack(anchor="w")
 
         notebook = ttk.Notebook(self)
